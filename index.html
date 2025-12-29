@@ -16,9 +16,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.scene {
-  position: relative;
-}
+.scene { position: relative; }
 
 /* PLATE */
 .plate {
@@ -31,7 +29,22 @@ body {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+  box-sizing: border-box;
 }
+
+.plate-text {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: #b6b1a8;
+}
+
+.plate-text .ai { text-transform: uppercase; font-weight: 500; }
+.plate-text .flowers { text-transform: lowercase; font-weight: 400; }
 
 /* GOLD FEET */
 .feet {
@@ -49,11 +62,7 @@ body {
 .foot {
   width: 26px;
   height: 6px;
-  background: linear-gradient(
-    to bottom,
-    #d9c27a,
-    #b89b4a
-  );
+  background: linear-gradient(to bottom, #d9c27a, #b89b4a);
   border-radius: 3px;
   box-shadow:
     0 1px 2px rgba(0,0,0,0.25),
@@ -64,11 +73,7 @@ body {
 .pot {
   width: 240px;
   height: 80px;
-  background: linear-gradient(
-    to bottom,
-    #f4f1ea,
-    #ece6db
-  );
+  background: linear-gradient(to bottom, #f4f1ea, #ece6db);
   border-radius: 10px 10px 18px 18px;
   position: relative;
   box-shadow:
@@ -99,43 +104,51 @@ body {
   right: 18px;
   height: 12px;
   border-radius: 0 0 60% 60%;
-  box-shadow:
-    inset 0 -3px 4px rgba(0,0,0,0.08);
-  pointer-events: none;
+  box-shadow: inset 0 -3px 4px rgba(0,0,0,0.08);
   z-index: 3;
 }
 
-/* DIRT — FLIPPED, CONTAINED */
+/* DIRT — RICH BROWNS, MICRO TEXTURE, MOSS LINES */
 .dirt {
   position: absolute;
   top: 6px;
   left: 0;
   right: 0;
   height: 36px;
+
+  /* Layered textures */
   background:
+    /* moss: tiny green line segments */
+    repeating-linear-gradient(
+      35deg,
+      rgba(92,120,60,0.45) 0 1px,
+      transparent 1px 6px
+    ),
+    repeating-linear-gradient(
+      -20deg,
+      rgba(88,112,58,0.35) 0 1px,
+      transparent 1px 7px
+    ),
+
+    /* micro rocks: tiny odd dots */
+    radial-gradient(circle at 18% 55%, rgba(30,20,15,0.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 62%, rgba(40,28,18,0.45) 0 1px, transparent 2px),
+    radial-gradient(circle at 67% 58%, rgba(25,18,12,0.5) 0 1px, transparent 2px),
+    radial-gradient(circle at 83% 66%, rgba(35,24,16,0.45) 0 1px, transparent 2px),
+
+    /* soil body */
     linear-gradient(
       to bottom,
-      #f2eee6 0%,
-      #e8e1d6 22%,
-      #6b4f3b 45%,
+      #7a5a3f 0%,
+      #6b4f3b 35%,
       #5a4130 100%
     );
+
   border-radius: 70% 70% 0 0;
   box-shadow:
-    inset 0 -2px 3px rgba(255,255,255,0.35),
-    inset 0 3px 4px rgba(0,0,0,0.22);
+    inset 0 -2px 3px rgba(255,255,255,0.25),
+    inset 0 3px 4px rgba(0,0,0,0.25);
   z-index: 2;
-}
-
-/* LABEL */
-.label {
-  position: absolute;
-  bottom: -78px;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  letter-spacing: 0.45em;
-  color: #b6b1a8;
 }
 </style>
 </head>
@@ -152,8 +165,12 @@ body {
       <div class="foot"></div>
     </div>
 
-    <div class="plate"></div>
-    <div class="label">AI.FLOWERS</div>
+    <div class="plate">
+      <div class="plate-text">
+        <span class="ai">AI</span>
+        <span class="flowers">flowers</span>
+      </div>
+    </div>
   </div>
 </body>
 </html>
