@@ -47,7 +47,7 @@ body {
   box-shadow:
     inset 0 -4px 6px rgba(0,0,0,0.06),
     0 10px 18px rgba(0,0,0,0.10);
-  overflow: hidden; /* critical: clips dirt */
+  overflow: hidden; /* clips dirt */
 }
 
 /* POT LIP */
@@ -60,30 +60,31 @@ body {
   height: 14px;
   background: #f7f4ee;
   border-radius: 8px;
+  z-index: 3;
 }
 
-/* INNER DIP */
+/* INNER DIP SHADOW */
 .pot::after {
   content: "";
   position: absolute;
-  top: 12px;
-  left: 22px;
-  right: 22px;
-  height: 14px;
+  top: 14px;
+  left: 18px;
+  right: 18px;
+  height: 12px;
   border-radius: 0 0 60% 60%;
   box-shadow:
     inset 0 -3px 4px rgba(0,0,0,0.08);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* DIRT — INSIDE THE DIP, CLIPPED BY POT */
+/* DIRT — FILLS TOP, CLIPPED BY POT */
 .dirt {
   position: absolute;
-  top: 14px;           /* moved UP */
-  left: 18px;          /* wider so sides get cut */
-  right: 18px;
-  height: 20px;        /* taller so curve emerges */
+  top: 6px;          /* fills the top */
+  left: 0;
+  right: 0;
+  height: 36px;
   background: linear-gradient(
     to bottom,
     #6b4f3b 0%,
@@ -91,8 +92,8 @@ body {
   );
   border-radius: 0 0 70% 70%;
   box-shadow:
-    inset 0 -2px 3px rgba(0,0,0,0.22);
-  z-index: 0;          /* sits behind dip shadow */
+    inset 0 -3px 4px rgba(0,0,0,0.22);
+  z-index: 1;
 }
 
 /* LABEL */
