@@ -6,113 +6,105 @@
 <title>ai.flowers</title>
 
 <style>
-/* STAGE */
 body {
   margin: 0;
   height: 100vh;
-  background: #f6f4ef;
+  background: #f7f5f0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* SCENE */
 .scene {
   position: relative;
 }
 
-/* BONSAI POT (2D, OFF-WHITE) */
+/* RECTANGLE PLATE */
+.plate {
+  width: 280px;
+  height: 22px;
+  background: #ebe6dc;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* BONSAI POT (PAINTERLY, FLAT) */
 .pot {
-  width: 260px;
-  height: 90px;
-  background: #f2eee6;
-  border-radius: 8px 8px 18px 18px;
+  width: 240px;
+  height: 80px;
+  background:
+    linear-gradient(
+      to bottom,
+      #f4f1ea,
+      #ece6db
+    );
+  border-radius: 10px 10px 18px 18px;
   position: relative;
   box-shadow:
-    inset 0 -6px 10px rgba(0,0,0,0.06),
-    0 8px 16px rgba(0,0,0,0.08);
+    inset 0 -4px 6px rgba(0,0,0,0.06),
+    0 10px 18px rgba(0,0,0,0.10);
 }
 
 /* POT LIP */
 .pot::before {
   content: "";
   position: absolute;
-  top: -10px;
-  left: -6px;
-  width: calc(100% + 12px);
-  height: 18px;
-  background: #f6f2ec;
+  top: -8px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 14px;
+  background: #f7f4ee;
   border-radius: 8px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* DIRT MOUND */
+/* DIRT MOUND (PAINTERLY, NOT BLOB) */
 .dirt {
   position: absolute;
-  top: 8px;
-  left: 16px;
-  right: 16px;
-  height: 40px;
-  background: radial-gradient(
-    ellipse at center,
-    #5a3a23 0%,
-    #4a2f1e 60%,
-    #3a2417 100%
-  );
-  border-radius: 0 0 24px 24px;
+  top: 10px;
+  left: 18px;
+  right: 18px;
+  height: 28px;
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      #6a4a32,
+      #4a2f1e
+    );
+  border-radius: 0 0 18px 18px;
+  opacity: 0.9;
 }
 
-/* DIRT HILL SHAPE */
-.dirt::before {
-  content: "";
+/* MOSS HINT */
+.moss {
   position: absolute;
-  left: 50%;
-  top: -10px;
-  width: 120px;
-  height: 26px;
-  background: radial-gradient(
-    ellipse at center,
-    #5f3f28,
-    #4a2f1e
-  );
+  top: 18px;
+  left: 26px;
+  width: 48px;
+  height: 10px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #7c9a6b,
+      #5f7f56
+    );
   border-radius: 50%;
-  transform: translateX(-50%);
-}
-
-/* TINY METAL FEET */
-.foot {
-  position: absolute;
-  bottom: -6px;
-  width: 14px;
-  height: 6px;
-  background: linear-gradient(
-    to right,
-    #c9b37e,
-    #f1e2b6,
-    #bfa56a
-  );
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
-}
-
-.foot.left {
-  left: 14px;
-}
-
-.foot.right {
-  right: 14px;
+  opacity: 0.6;
 }
 
 /* LABEL */
 .label {
   position: absolute;
-  bottom: -72px;
+  bottom: -78px;
   width: 100%;
   text-align: center;
   font-size: 13px;
   letter-spacing: 0.45em;
-  color: #b8b2a8;
+  color: #b6b1a8;
 }
 </style>
 </head>
@@ -121,9 +113,9 @@ body {
   <div class="scene">
     <div class="pot">
       <div class="dirt"></div>
-      <div class="foot left"></div>
-      <div class="foot right"></div>
+      <div class="moss"></div>
     </div>
+    <div class="plate"></div>
     <div class="label">AI.FLOWERS</div>
   </div>
 </body>
