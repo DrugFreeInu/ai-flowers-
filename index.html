@@ -35,16 +35,23 @@ body {
   box-sizing: border-box;
 }
 
+/* PLATE TEXT */
 .plate-text {
-  display: flex;
-  gap: 10px;
   font-size: 11px;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.25em;
   color: #b6b1a8;
+  font-weight: 600;        /* bold */
+  text-transform: lowercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.plate-text .ai { text-transform: uppercase; font-weight: 500; }
-.plate-text .flowers { text-transform: lowercase; font-weight: 400; }
+.plate-text .shrine {
+  font-size: 12px;
+  line-height: 1;
+  opacity: 0.85;
+}
 
 /* GOLD FEET */
 .feet {
@@ -108,16 +115,15 @@ body {
   z-index: 3;
 }
 
-/* DIRT — MORE REAL, SCATTERED, NO PATTERN */
+/* DIRT — REALISTIC, SCATTERED */
 .dirt {
   position: absolute;
-  top: 2px;                 /* moved UP */
+  top: 2px;
   left: 0;
   right: 0;
   height: 40px;
 
   background:
-    /* random small stones */
     radial-gradient(circle at 12% 48%, rgba(20,15,10,0.55) 0 1.2px, transparent 2px),
     radial-gradient(circle at 27% 60%, rgba(35,25,18,0.45) 0 1px, transparent 2px),
     radial-gradient(circle at 41% 52%, rgba(25,18,12,0.5) 0 1.3px, transparent 2.5px),
@@ -125,17 +131,10 @@ body {
     radial-gradient(circle at 71% 50%, rgba(22,16,11,0.55) 0 1.2px, transparent 2px),
     radial-gradient(circle at 86% 62%, rgba(30,22,15,0.45) 0 1px, transparent 2px),
 
-    /* tiny dark soil flecks */
-    radial-gradient(circle at 18% 70%, rgba(10,8,6,0.4) 0 0.8px, transparent 2px),
-    radial-gradient(circle at 49% 74%, rgba(10,8,6,0.35) 0 0.8px, transparent 2px),
-    radial-gradient(circle at 77% 72%, rgba(10,8,6,0.4) 0 0.8px, transparent 2px),
-
-    /* sparse moss lines (not blobs) */
     linear-gradient(12deg, transparent 48%, rgba(78,105,64,0.35) 49% 50%, transparent 51%),
     linear-gradient(-18deg, transparent 52%, rgba(82,110,68,0.3) 53% 54%, transparent 55%),
     linear-gradient(28deg, transparent 60%, rgba(74,98,60,0.28) 61% 62%, transparent 63%),
 
-    /* soil mass */
     linear-gradient(
       to bottom,
       #7e5d42 0%,
@@ -166,8 +165,8 @@ body {
 
     <div class="plate">
       <div class="plate-text">
-        <span class="ai">AI</span>
-        <span class="flowers">flowers</span>
+        <span>ai.flowers</span>
+        <span class="shrine">⛩️</span>
       </div>
     </div>
   </div>
