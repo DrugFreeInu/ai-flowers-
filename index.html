@@ -6,156 +6,92 @@
 <title>ai.flowers</title>
 
 <style>
-:root {
-  --pot-w: 240px;
-  --pot-h: 80px;
-  --soil-h: 0.45;
-}
-
+/* STAGE */
 body {
   margin: 0;
   height: 100vh;
-  background: rgb(247, 248, 250);
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.camera {
-  perspective: 900px;
-}
-
+/* SCENE */
 .scene {
   position: relative;
-  transform: rotateX(7deg) scale(1.03);
-  transform-style: preserve-3d;
 }
 
-/* POT */
+/* BONSAI POT */
 .pot {
-  width: var(--pot-w);
-  height: var(--pot-h);
-  background: linear-gradient(
-    to bottom,
-    #f4f1ea 0%,
-    #eee8dd 55%,
-    #ece6db 100%
-  );
-  border-radius: 14px 14px 22px 22px;
+  width: 260px;
+  height: 60px;
+  background: #f2eee6;
+  border-radius: 8px 8px 16px 16px;
   position: relative;
   box-shadow:
-    inset 0 -6px 8px rgba(0,0,0,0.06),
-    0 14px 22px rgba(0,0,0,0.10);
-  overflow: hidden;
+    inset 0 -4px 8px rgba(0,0,0,0.06),
+    0 6px 12px rgba(0,0,0,0.08);
 }
 
 /* POT LIP */
 .pot::before {
   content: "";
   position: absolute;
-  top: -12%;
-  left: -4%;
-  width: 108%;
-  height: 24%;
-  background: linear-gradient(
-    to bottom,
-    #f6f3ec 0%,
-    #efe9de 60%,
-    #e6dfd3 100%
-  );
-  border-radius: 16px;
-  z-index: 5;
-}
-
-/* DIRT — ORGANIC, UPSIDE-UP, SOFT JAGGED EDGE */
-.dirt {
-  position: absolute;
-  top: -22%;
-  left: 6%;
-  right: 6%;
-  height: calc(var(--pot-h) * var(--soil-h));
-
-  background:
-    /* erosion bites along edge */
-    radial-gradient(circle at 12% 0%, rgba(244,241,234,0.9) 0 6px, transparent 9px),
-    radial-gradient(circle at 26% 0%, rgba(244,241,234,0.85) 0 5px, transparent 8px),
-    radial-gradient(circle at 41% 0%, rgba(244,241,234,0.9) 0 7px, transparent 10px),
-    radial-gradient(circle at 58% 0%, rgba(244,241,234,0.85) 0 5px, transparent 8px),
-    radial-gradient(circle at 73% 0%, rgba(244,241,234,0.9) 0 6px, transparent 9px),
-    radial-gradient(circle at 88% 0%, rgba(244,241,234,0.85) 0 5px, transparent 8px),
-
-    /* soil texture dots */
-    radial-gradient(circle at 20% 45%, rgba(30,22,15,0.45) 0 1px, transparent 3px),
-    radial-gradient(circle at 50% 50%, rgba(18,14,10,0.55) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 80% 46%, rgba(35,26,18,0.4) 0 1px, transparent 3px),
-
-    /* soil body */
-    linear-gradient(
-      to top,
-      #5a4130 0%,
-      #6f523c 50%,
-      #846246 100%
-    );
-
-  /* upside-up dirt hill */
-  border-radius: 999px 999px 24px 24px;
-
-  box-shadow:
-    inset 0 10px 14px rgba(0,0,0,0.28),
-    inset 0 -6px 8px rgba(255,255,255,0.12);
-
+  top: -10px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: 18px;
+  background: #f6f2ec;
+  border-radius: 18px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
   z-index: 3;
 }
 
-/* PLATE */
-.plate {
-  width: 280px;
-  height: 22px;
-  background: #ebe6dc;
-  border-radius: 6px;
+/* SHADOW UNDER LIP */
+.pot::after {
+  content: "";
   position: absolute;
-  bottom: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  padding-left: 18px;
+  top: 6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.14),
+    rgba(0,0,0,0)
+  );
+  border-radius: 0 0 16px 16px;
+  z-index: 2;
+  pointer-events: none;
 }
 
-/* TEXT */
-.plate-text {
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  color: #b6b1a8;
-  font-weight: 600;
-  text-transform: lowercase;
+/* FEET */
+.foot {
+  position: absolute;
+  bottom: -6px;
+  width: 14px;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    #c9b37e,
+    #f1e2b6,
+    #bfa56a
+  );
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
-.plate-text .ai {
-  display: inline-block;
-  transform: skewX(-12deg);
-}
-
-.plate-text .flowers {
-  font-style: italic;
-}
+.foot.left { left: 14px; }
+.foot.right { right: 14px; }
 </style>
 </head>
 
 <body>
-  <div class="camera">
-    <div class="scene">
-      <div class="pot">
-        <div class="dirt"></div>
-      </div>
-
-      <div class="plate">
-        <div class="plate-text">
-          <span class="ai">ai</span><span class="flowers">.flowers</span>
-        </div>
-      </div>
+  <div class="scene">
+    <div class="pot">
+      <div class="foot left"></div>
+      <div class="foot right"></div>
     </div>
   </div>
 </body>
