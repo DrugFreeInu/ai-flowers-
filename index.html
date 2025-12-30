@@ -9,7 +9,7 @@
 :root {
   --pot-w: 240px;
   --pot-h: 80px;
-  --soil-h: 0.5;
+  --soil-h: 0.45;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 
 .scene {
   position: relative;
-  transform: rotateX(8deg) scale(1.03);
+  transform: rotateX(7deg) scale(1.03);
   transform-style: preserve-3d;
 }
 
@@ -39,10 +39,10 @@ body {
   background: linear-gradient(
     to bottom,
     #f4f1ea 0%,
-    #eee8dd 50%,
+    #eee8dd 55%,
     #ece6db 100%
   );
-  border-radius: 12px 12px 20px 20px;
+  border-radius: 14px 14px 22px 22px;
   position: relative;
   box-shadow:
     inset 0 -6px 8px rgba(0,0,0,0.06),
@@ -54,68 +54,49 @@ body {
 .pot::before {
   content: "";
   position: absolute;
-  top: -10%;
+  top: -12%;
   left: -4%;
   width: 108%;
-  height: 22%;
+  height: 24%;
   background: linear-gradient(
     to bottom,
     #f6f3ec 0%,
-    #f1ece2 60%,
-    #ece6db 100%
+    #efe9de 60%,
+    #e6dfd3 100%
   );
-  border-radius: 14px;
-  z-index: 5;
+  border-radius: 16px;
+  z-index: 4;
 }
 
-/* DIRT */
+/* DIRT — UPSIDE DOWN WITH OWN BORDER */
 .dirt {
   position: absolute;
-  top: -16%;
-  left: 8%;
-  right: 8%;
+  top: -18%;
+  left: 7%;
+  right: 7%;
   height: calc(var(--pot-h) * var(--soil-h));
+
   background:
-    radial-gradient(circle at 20% 45%, rgba(30,22,15,0.5) 0 1px, transparent 3px),
-    radial-gradient(circle at 50% 50%, rgba(18,14,10,0.6) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 80% 46%, rgba(35,26,18,0.45) 0 1px, transparent 3px),
+    radial-gradient(circle at 20% 55%, rgba(25,18,12,0.55) 0 1px, transparent 3px),
+    radial-gradient(circle at 50% 60%, rgba(18,14,10,0.6) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 80% 58%, rgba(30,22,15,0.45) 0 1px, transparent 3px),
     linear-gradient(
-      to top,
-      #5a4130 0%,
-      #6f523c 45%,
-      #846246 100%
+      to bottom,
+      #846246 0%,
+      #6f523c 55%,
+      #5a4130 100%
     );
-  border-radius: 999px;
-  box-shadow:
-    inset 0 10% 14% rgba(0,0,0,0.32),
-    inset 0 -6% 8% rgba(255,255,255,0.12);
-  z-index: 2;
-}
 
-/* 🔥 SOIL FRAME — HOLLOW INSERT */
-.soil-frame {
-  position: absolute;
-  top: -14%;
-  left: 5%;
-  right: 5%;
-  height: calc(var(--pot-h) * 0.42);
-  border-radius: 999px;
-  background: linear-gradient(
-    to bottom,
-    #e9e2d6 0%,
-    #dcd4c6 50%,
-    #cfc6b7 100%
-  );
-  box-shadow:
-    inset 0 6px 10px rgba(0,0,0,0.25),
-    inset 0 -2px 4px rgba(255,255,255,0.35);
-  z-index: 4;
+  /* upside-down capsule */
+  border-radius: 0 0 999px 999px;
 
-  /* Hollow center */
-  -webkit-mask:
-    radial-gradient(ellipse at center, transparent 55%, black 56%);
-          mask:
-    radial-gradient(ellipse at center, transparent 55%, black 56%);
+  /* THIS IS THE KEY: dirt owns its border */
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,0.55), /* black growth edge */
+    inset 0 -8px 12px rgba(0,0,0,0.35),
+    inset 0 6px 8px rgba(255,255,255,0.12);
+
+  z-index: 3;
 }
 
 /* PLATE */
@@ -158,7 +139,6 @@ body {
   <div class="camera">
     <div class="scene">
       <div class="pot">
-        <div class="soil-frame"></div>
         <div class="dirt"></div>
       </div>
 
