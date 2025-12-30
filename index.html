@@ -9,7 +9,7 @@
 :root {
   --pot-w: 240px;
   --pot-h: 80px;
-  --soil-h: 0.6;
+  --soil-h: 0.55;
 }
 
 body {
@@ -22,7 +22,9 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.scene { position: relative; }
+.scene {
+  position: relative;
+}
 
 /* POT */
 .pot {
@@ -50,64 +52,45 @@ body {
   z-index: 4;
 }
 
-/* ROUTED WOOD BORDER (CRAFT) */
-.pot::after {
-  content: "";
-  position: absolute;
-  top: 18%;
-  left: 10%;
-  right: 10%;
-  height: 34%;
-  border-radius: 999px;
-  box-shadow:
-    inset 0 0 0 1px rgba(40,28,20,0.55),
-    inset 0 2px 3px rgba(0,0,0,0.25),
-    inset 0 -2px 3px rgba(255,255,255,0.15);
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* DIRT — UPWARD HILL, HEAVY DETAIL */
+/* DIRT — FLIPPED (HANGING), DOTS ONLY */
 .dirt {
   position: absolute;
-  top: -4%;
+  top: -6%;
   left: 0;
   right: 0;
   height: calc(var(--pot-h) * var(--soil-h));
 
   background:
-    /* lots of micro stones */
-    radial-gradient(circle at 6% 70%, rgba(20,15,10,.55) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 14% 62%, rgba(30,22,15,.45) 0 1px, transparent 3px),
-    radial-gradient(circle at 22% 74%, rgba(18,14,10,.6) 0 1.3px, transparent 3px),
-    radial-gradient(circle at 30% 66%, rgba(28,20,14,.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 38% 72%, rgba(22,16,11,.55) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 46% 64%, rgba(35,26,18,.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 54% 76%, rgba(18,14,10,.6) 0 1.3px, transparent 3px),
-    radial-gradient(circle at 62% 68%, rgba(30,22,15,.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 70% 74%, rgba(22,16,11,.55) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 78% 66%, rgba(35,26,18,.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 86% 72%, rgba(18,14,10,.6) 0 1.3px, transparent 3px),
+    /* scattered stones */
+    radial-gradient(circle at 8% 30%, rgba(30,22,15,0.5) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 18% 36%, rgba(18,14,10,0.6) 0 1.3px, transparent 3px),
+    radial-gradient(circle at 28% 32%, rgba(35,26,18,0.45) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 38% 38%, rgba(22,16,11,0.55) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 48% 30%, rgba(30,22,15,0.45) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 58% 36%, rgba(18,14,10,0.6) 0 1.3px, transparent 3px),
+    radial-gradient(circle at 68% 32%, rgba(35,26,18,0.45) 0 1.1px, transparent 3px),
+    radial-gradient(circle at 78% 38%, rgba(22,16,11,0.55) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 88% 30%, rgba(30,22,15,0.45) 0 1.1px, transparent 3px),
 
-    /* fine grain */
-    repeating-radial-gradient(
-      circle at center,
-      rgba(0,0,0,0.08) 0 0.35%,
-      transparent 0.6% 1.6%
-    ),
+    /* fine soil specks */
+    radial-gradient(circle at 14% 46%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 36% 44%, rgba(8,6,4,0.35) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 62% 48%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 84% 46%, rgba(8,6,4,0.35) 0 0.8px, transparent 3px),
 
-    /* soil body */
+    /* flipped soil body */
     linear-gradient(
-      to bottom,
-      #846246 0%,
+      to top,
+      #5a4130 0%,
       #6f523c 45%,
-      #5a4130 100%
+      #846246 100%
     );
 
-  border-radius: 0 0 64% 58%;
+  /* concave down (hanging) */
+  border-radius: 60% 60% 0 0;
   box-shadow:
-    inset 0 -8% 10% rgba(255,255,255,0.12),
-    inset 0 14% 18% rgba(0,0,0,0.35);
+    inset 0 12% 16% rgba(0,0,0,0.35),
+    inset 0 -6% 8% rgba(255,255,255,0.12);
   z-index: 2;
 }
 
@@ -139,16 +122,15 @@ body {
 }
 
 .plate-text .ai {
-  font-style: italic;
   display: inline-block;
-  transform: skewX(-12deg); /* reverse italic = tech */
+  transform: skewX(-12deg); /* reverse italic */
 }
 
 .plate-text .flowers {
-  font-style: italic; /* normal italic = organic */
+  font-style: italic;
 }
 
-/* GOLD FEET (UNCHANGED) */
+/* GOLD FEET */
 .feet {
   position: absolute;
   bottom: -6px;
