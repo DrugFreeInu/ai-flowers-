@@ -31,7 +31,7 @@ body {
   position: relative;
   box-shadow:
     inset 0 -4px 8px rgba(0,0,0,0.06),
-    0 3px 6px rgba(0,0,0,0.10); /* tightened ground shadow */
+    0 3px 6px rgba(0,0,0,0.10);
 }
 
 /* POT LIP */
@@ -42,9 +42,19 @@ body {
   left: -6px;
   width: calc(100% + 12px);
   height: 18px;
-  background: #f6f2ec;
+
+  /* subtle ceramic round gradient */
+  background: linear-gradient(
+    to bottom,
+    #faf7f1 0%,
+    #f6f2ec 45%,
+    #efe9df 100%
+  );
+
   border-radius: 18px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.6),
+    inset 0 -2px 3px rgba(0,0,0,0.06);
   z-index: 3;
 }
 
@@ -53,15 +63,15 @@ body {
   content: "";
   position: absolute;
   top: 6px;
-  left: -6px;
-  width: calc(100% + 12px);
-  height: 10px; /* reduced */
+  left: 0;
+  width: 100%;
+  height: 10px;
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0.12),
     rgba(0,0,0,0)
   );
-  border-radius: 0 0 14px 14px;
+  border-radius: 0 0 16px 16px;
   z-index: 2;
   pointer-events: none;
 }
