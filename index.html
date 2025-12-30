@@ -55,7 +55,7 @@ body {
   z-index: 3;
 }
 
-/* SHADOW UNDER LIP — LIGHTENED ~35% */
+/* SHADOW UNDER LIP */
 .pot::after {
   content: "";
   position: absolute;
@@ -65,12 +65,32 @@ body {
   height: 10px;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.08),   /* was ~0.12 */
+    rgba(0,0,0,0.12),
     rgba(0,0,0,0)
   );
   border-radius: 0 0 16px 16px;
   z-index: 2;
   pointer-events: none;
+}
+
+/* POT MARK */
+.mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  display: flex;
+  gap: 14px;              /* even spacing */
+  font-size: 14px;
+  color: #b8b2a8;         /* quiet ceramic ink */
+  letter-spacing: 0.02em;
+  z-index: 4;
+}
+
+.mark span {
+  display: inline-block;
+  width: 18px;            /* equal visual weight */
+  text-align: center;
 }
 
 /* FEET */
@@ -97,6 +117,13 @@ body {
 <body>
   <div class="scene">
     <div class="pot">
+      <div class="mark">
+        <span>P</span>
+        <span>の</span>
+        <span>T</span>
+        <span>凵</span>
+        <span>B</span>
+      </div>
       <div class="foot left"></div>
       <div class="foot right"></div>
     </div>
