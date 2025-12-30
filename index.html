@@ -42,14 +42,14 @@ body {
   color: #b6b1a8;
   font-weight: 600;
   text-transform: lowercase;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
-.plate-text .shrine {
-  font-size: 12px;
-  opacity: 0.85;
+.plate-text .ai {
+  font-style: italic;
+}
+
+.plate-text .flowers {
+  font-style: normal;
 }
 
 /* GOLD FEET */
@@ -100,71 +100,51 @@ body {
   z-index: 4;
 }
 
-/* INNER DIP SHADOW */
+/* THIN BLACK RIM (ATTACHED TO POT) */
 .pot::after {
   content: "";
   position: absolute;
-  top: 12px;
-  left: 18px;
-  right: 18px;
-  height: 14px;
-  border-radius: 0 0 65% 58%;
-  box-shadow: inset 0 -3px 4px rgba(0,0,0,0.08);
+  top: 8px;
+  left: 14px;
+  right: 14px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.45);
+  pointer-events: none;
   z-index: 3;
 }
 
-/* DIRT */
+/* DIRT — PUSHED UP, CONVEX */
 .dirt {
   position: absolute;
-  top: -2px;              /* moved UP */
+  top: -6px;              /* moved UP */
   left: 0;
   right: 0;
-  height: 44px;
+  height: 48px;
 
   background:
-    /* scattered stones */
-    radial-gradient(circle at 9% 58%, rgba(18,14,10,0.55) 0 1.4px, transparent 3px),
-    radial-gradient(circle at 21% 64%, rgba(30,22,15,0.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 33% 56%, rgba(22,16,11,0.5) 0 1.3px, transparent 3px),
-    radial-gradient(circle at 47% 66%, rgba(35,26,18,0.45) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 59% 54%, rgba(20,15,10,0.55) 0 1.4px, transparent 3px),
-    radial-gradient(circle at 71% 63%, rgba(32,24,16,0.45) 0 1.1px, transparent 3px),
-    radial-gradient(circle at 83% 57%, rgba(25,18,12,0.5) 0 1.3px, transparent 3px),
+    radial-gradient(circle at 12% 62%, rgba(18,14,10,0.55) 0 1.4px, transparent 3px),
+    radial-gradient(circle at 27% 68%, rgba(30,22,15,0.45) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 44% 60%, rgba(22,16,11,0.5) 0 1.3px, transparent 3px),
+    radial-gradient(circle at 61% 70%, rgba(35,26,18,0.45) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 78% 64%, rgba(25,18,12,0.5) 0 1.3px, transparent 3px),
 
-    /* fine soil specks */
-    radial-gradient(circle at 15% 72%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
-    radial-gradient(circle at 38% 75%, rgba(8,6,4,0.35) 0 0.8px, transparent 3px),
-    radial-gradient(circle at 62% 73%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
-    radial-gradient(circle at 82% 76%, rgba(8,6,4,0.35) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 18% 78%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 52% 80%, rgba(8,6,4,0.35) 0 0.8px, transparent 3px),
+    radial-gradient(circle at 82% 82%, rgba(8,6,4,0.4) 0 0.8px, transparent 3px),
 
-    /* soil body */
     linear-gradient(
       to bottom,
       #7f5e43 0%,
-      #6d513b 40%,
+      #6d513b 45%,
       #5a4130 100%
     );
 
-  border-radius: 62% 58% 0 0;   /* imperfect curve */
+  border-radius: 0 0 60% 60%;   /* convex mound */
   box-shadow:
-    inset 0 -2px 3px rgba(255,255,255,0.15),
-    inset 0 4px 6px rgba(0,0,0,0.3);
+    inset 0 -2px 3px rgba(255,255,255,0.12),
+    inset 0 5px 7px rgba(0,0,0,0.35);
   z-index: 2;
-}
-
-/* POT-COLORED RIM AROUND DIRT */
-.dirt::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  height: 16px;
-  background: linear-gradient(to bottom, #f4f1ea, #ede7dc);
-  border-radius: 70% 65% 0 0;
-  box-shadow:
-    inset 0 -2px 2px rgba(0,0,0,0.12);
-  z-index: -1;
 }
 </style>
 </head>
@@ -183,8 +163,7 @@ body {
 
     <div class="plate">
       <div class="plate-text">
-        <span>ai.flowers</span>
-        <span class="shrine">⛩️</span>
+        <span class="ai">ai</span><span>.flowers</span>
       </div>
     </div>
   </div>
